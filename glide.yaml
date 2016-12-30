@@ -1,0 +1,6 @@
+package: github.com/vikashvverma/greeter
+import:
+- package: github.com/sendgrid/sendgrid-go
+  version: ~3.3.1
+- package: github.com/sendgrid/rest
+  version: ~2.3.1

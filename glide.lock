@@ -1,0 +1,10 @@
+hash: 34d8dce6fc24cf465bc45730a590b3790e536102fa7e63ea6afe9162d4571c4f
+updated: 2016-12-30T17:01:50.598252999+05:30
+imports:
+- name: github.com/sendgrid/rest
+  version: 3ec51b4f1754e13e92409355851a0a82e9a06461
+- name: github.com/sendgrid/sendgrid-go
+  version: aae62ebbdabd46754b041a12b9f74d2ffdfc49d7
+  subpackages:
+  - helpers/mail
+testImports: []
