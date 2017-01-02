@@ -1,0 +1,182 @@
+<html>
+<head>
+    <style type="text/css">
+        body {
+            background: #F2F2F2;
+            margin-top: 30px;
+        }
+        table.row{
+            width:100%;
+        }
+        table.twelve.columns{
+            width:100%;
+        }
+
+        td {
+            color: #4D4D4D;
+            font-size: 16px;
+            line-height: 1.625;
+        }
+        td.center{
+            text-align: center;
+        }
+
+        .greet {
+            color: #3498DB;
+            font-weight: bold;
+            letter-spacing: -0.05em;
+            font-size: 32px;
+        }
+
+        .name {
+            color: #FF6E6E;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .container {
+            background: #fff;
+        }
+
+        .header {
+            background: #FF6E6E;
+        }
+
+        .header.row{
+            width:100%;
+        }
+        .wishes {
+            color: #5BC3B2;
+            font-size: 16px;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .left {
+            text-align: left;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        .footer {
+            background: #FF6E6E;
+        }
+
+    </style>
+</head>
+<body>
+    <!--ZURB INK - RESPONSIVE HTML EMAIL FRAMEWORK-->
+    <table class="body" >
+        <tr>
+            <td class="center" align="center" valign="top">
+                <center>
+
+                    <!-- Email Content -->
+                    <table class="container" >
+                        <tr>
+                            <td>
+
+                                <table class="header row">
+                                    <tr>
+                                        <td class="wrapper last">
+
+                                            <table class="twelve columns" style="width: 100%;">
+                                                <tr>
+                                                    <td class="center">
+
+                                                        <img height="80" src="http://i.imgur.com/BCtPo1X.gif" class="center" alt="Amore Dio Logo" />
+
+                                                    </td>
+                                                    <td class="expander"></td>
+                                                </tr>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+                                </table><!--END OF ROW-->
+
+                                <table class="row" style="width:100%;">
+                                    <tr>
+                                        <td class="wrapper last">
+                                    <tr>
+                                        <td>
+
+                                            <table class="twelve columns" style="width: 100%;">
+                                                <tr>
+                                                    <td class="text-pad center">
+                                                        <center>
+
+                                                            Dear friends, <br />
+                                                            On this special day, we'd like to shout <br />
+                                                            <h1 class="center">
+                                                                <center class="greet">
+                                                                    Happy Birthday!
+                                                                </center>
+                                                            </h1>
+                                                            to our dearest friend... <br /><br />
+                                                            <h6 class="center">
+                                                                <center class="name">
+                                                                    {{.Name}}
+                                                                </center>
+                                                            </h6>
+
+                                                            <hr />
+                                                        </center>
+                                                    </td>
+                                                    <td class="expander"></td>
+                                                </tr>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+                                    </td>
+                                    </tr>
+                                </table><!--END OF ROW-->
+
+                                <table class="row">
+                                    <tr>
+                                        <td class="wrapper last">
+                                            <table class="twelve columns">
+                                                <tr>
+                                                    <td class="text-pad center">
+                                                        <center>
+                                                            <img height="128" width="108" src="https://db.tt/d4swznQh" class="center" alt="birthday cake image" />
+
+                                                            <p class="center">
+                                                            <center class="wishes">
+                                                                Hope your birthday blossoms into lots of dreams come true.<br />Have a blessed day!
+                                                            </center>
+                                                            </p>
+                                                        </center>
+                                                    </td>
+                                                    <td class="expander"></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table><!--END OF ROW-->
+
+                                <table class="row footer" >
+                                    <tr>
+                                        <td class="wrapper last">
+                                            <table class="twelve columns">
+                                                <tr>
+                                                    <td class="left">
+                                                        Regards,<br />Promice friends :)
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </td>
+                        </tr>
+                    </table>
+                    <!--END OF CONTENT-->
+                </center>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

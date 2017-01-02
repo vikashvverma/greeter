@@ -19,7 +19,7 @@ type Config struct {
 
 func New(contents []byte) *Config {
 	f := mail.NewEmail("Promice", "vikash@programminggeek.in")
-	c := mail.NewContent("text/plain", "Many happy returns of the day!")
+	c := mail.NewContent("text/html", "Many happy returns of the day!")
 	var config Config
 	err := json.Unmarshal(contents, &config)
 	if err != nil {

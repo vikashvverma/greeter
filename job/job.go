@@ -3,14 +3,16 @@ package job
 import (
 	"errors"
 	"fmt"
+	"html/template"
+	"io/ioutil"
+	"encoding/json"
+	"bytes"
 
 	"github.com/sendgrid/sendgrid-go"
 	"github.com/sendgrid/sendgrid-go/helpers/mail"
 
-	"encoding/json"
 	"github.com/vikashvverma/greeter/config"
 	"github.com/vikashvverma/greeter/person"
-	"io/ioutil"
 )
 
 type Greeter interface {
@@ -35,12 +37,16 @@ func (gm *greetingMailer) Greet() []error {
 	p := gm.people()
 	request := sendgrid.GetRequest(gm.config.APIKey, endpoint, host)
 	var errs []error
+
 	for _, person := range p {
 		if person.IsToday() == false {
 			continue
 		}
 		email := person.Email()
-		m := mail.NewV3MailInit(gm.config.From, gm.config.Subject, email, gm.config.Content)
+		greeting, err := greeting(person)
+		fmt.Printf("\nGreeting: %#v\n", greeting)
+		fmt.Printf("\nerr: %s\n", err)
+		m := mail.NewV3MailInit(gm.config.From, gm.config.Subject, email, greeting)
 		request.Method = method
 		request.Body = mail.GetRequestBody(m)
 		response, err := sendgrid.API(request)
@@ -72,4 +78,18 @@ func (gm *greetingMailer) people() []person.Person {
 		return nil
 	}
 	return people
+}
+
+func greeting(p person.Person) (*mail.Content, error) {
+	t := template.New("greeting")
+	t, err := t.ParseFiles("greeting.html")
+	if err != nil {
+		fmt.Println(err)
+		return nil, err
+	}
+	buf := new(bytes.Buffer)
+	t.ExecuteTemplate(buf, "greeting.html", p)
+	fmt.Printf(buf.String())
+	c := mail.NewContent("text/html", buf.String())
+	return c, nil
 }
