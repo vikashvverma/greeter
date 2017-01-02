@@ -8,7 +8,10 @@ import (
 )
 
 func main() {
-	c := config.New()
+	c := config.ReadConfig("./config.json")
+	if c == nil {
+		log.Fatal("Could not read config file!")
+	}
 	g := job.NewGreeter(c)
 	s := job.NewScheduler(c.Time, g)
 	gocron, err := s.Schedule()

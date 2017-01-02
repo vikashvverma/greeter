@@ -1,5 +1,5 @@
-hash: 85a476301124680a74cb370d358f44397d1018031740317a7f84f2f20ba644c8
-updated: 2017-01-02T09:51:45.052088889+05:30
+hash: 047191bc5f75dff5e55801bcd617307402a31cf00b2c29f3d395f3a04557ec8b
+updated: 2017-01-02T15:38:45.208441264+05:30
 imports:
 - name: github.com/jasonlvhit/gocron
   version: 42a5804d37aa0b9239b265e894a16b8edbf52d54
@@ -9,4 +9,6 @@ imports:
   version: aae62ebbdabd46754b041a12b9f74d2ffdfc49d7
   subpackages:
   - helpers/mail
+- name: github.com/stretchr/testify
+  version: 69483b4bd14f5845b5a1e55bca19e954e827f1d0
 testImports: []

@@ -1,12 +1,20 @@
 package person
 
-import "time"
+import (
+	"github.com/sendgrid/sendgrid-go/helpers/mail"
+	"time"
+)
 
 type Person struct {
-	Month time.Month
-	Day   int
-	Email string
-	Name  string
+	Address string `json:"email"`
+
+	Month time.Month `json:"month"`
+	Day   int        `json:"day"`
+	Name  string     `json:"name"`
+}
+
+func (p *Person) Email() *mail.Email {
+	return mail.NewEmail(p.Name, p.Address)
 }
 
 func (p *Person) IsToday() bool {
