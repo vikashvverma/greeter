@@ -16,7 +16,7 @@ func main() {
 	s := job.NewScheduler(c.Time, g)
 	gocron, err := s.Schedule()
 	if err != nil {
-		log.Fatalf("ListenAndServe: %s", err)
+		log.Fatalf("main: %s", err)
 	}
 	<-gocron.Start()
 }
