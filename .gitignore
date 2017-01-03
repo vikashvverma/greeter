@@ -27,4 +27,4 @@ sendgrid.env
 
 vendor
 .idea
-config1.json
+config.json
