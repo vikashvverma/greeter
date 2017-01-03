@@ -27,6 +27,7 @@ const (
 	endpoint = "/v3/mail/send"
 	host     = "https://api.sendgrid.com"
 	method   = "POST"
+	promice = "promice@thoughtworks.com"
 )
 
 func NewGreeter(c *config.Config) Greeter {
@@ -47,7 +48,7 @@ func (gm *greetingMailer) Greet() []error {
 		fmt.Printf("\nGreeting: %#v\n", greeting)
 		fmt.Printf("\nerr: %s\n", err)
 		m := mail.NewV3MailInit(gm.config.From, gm.config.Subject, email, greeting)
-		promice:=mail.NewEmail("Promice","vermavikash014@gmail.com")
+		promice:=mail.NewEmail("Promice",promice)
 		m.Personalizations[0].AddTos(promice)
 		request.Method = method
 		request.Body = mail.GetRequestBody(m)
