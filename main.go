@@ -2,7 +2,7 @@ package main
 
 import (
 	"log"
-	
+
 	"github.com/vikashvverma/greeter/config"
 	"github.com/vikashvverma/greeter/job"
 )
