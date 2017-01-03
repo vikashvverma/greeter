@@ -47,6 +47,8 @@ func (gm *greetingMailer) Greet() []error {
 		fmt.Printf("\nGreeting: %#v\n", greeting)
 		fmt.Printf("\nerr: %s\n", err)
 		m := mail.NewV3MailInit(gm.config.From, gm.config.Subject, email, greeting)
+		promice:=mail.NewEmail("Promice","vermavikash014@gmail.com")
+		m.Personalizations[0].AddTos(promice)
 		request.Method = method
 		request.Body = mail.GetRequestBody(m)
 		response, err := sendgrid.API(request)
