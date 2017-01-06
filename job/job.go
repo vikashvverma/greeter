@@ -45,8 +45,6 @@ func (gm *greetingMailer) Greet() []error {
 		}
 		email := person.Email()
 		greeting, err := greeting(person)
-		fmt.Printf("\nGreeting: %#v\n", greeting)
-		fmt.Printf("\nerr: %s\n", err)
 		m := mail.NewV3MailInit(gm.config.From, gm.config.Subject, email, greeting)
 		promice:=mail.NewEmail("Promice",promice)
 		m.Personalizations[0].AddTos(promice)
