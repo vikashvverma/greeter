@@ -28,3 +28,4 @@ sendgrid.env
 vendor
 .idea
 config.json
+dob.json
