@@ -1,10 +1,11 @@
 package config
 
 import (
-	"github.com/sendgrid/sendgrid-go/helpers/mail"
-	"io/ioutil"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
+
+	"github.com/sendgrid/sendgrid-go/helpers/mail"
 )
 
 type Config struct {
@@ -12,29 +13,28 @@ type Config struct {
 
 	APIKey string `json:"apiKey"`
 
-	Subject string `json:"subject"`
-	From    *mail.Email
+	Subject string        `json:"subject"`
+	From    *mail.Email   `json:"from"`
+	TOs     []*mail.Email `json:"tos"`
+	Ccs     []*mail.Email `json:"ccs"`
+	Bcc     []*mail.Email `json:"bccs"`
 	Content *mail.Content
 }
 
 func New(contents []byte) *Config {
-	f := mail.NewEmail("Promice-Greeting", "promice-greeting@thoughtworks.com")
-	c := mail.NewContent("text/html", "Many happy returns of the day!")
 	var config Config
 	err := json.Unmarshal(contents, &config)
 	if err != nil {
 		return nil
 	}
-	config.Content = c
-	config.From = f
 	return &config
 }
 
-func ReadConfig(path string) *Config {
+func ReadConfig(path string) (*Config, error) {
 	contents, err := ioutil.ReadFile(path)
 	if err != nil {
 		fmt.Printf("could not read config file: %s", err)
-		return nil
+		return nil, fmt.Errorf("could not read config file: %s", err)
 	}
-	return New(contents)
+	return New(contents), nil
 }

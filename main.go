@@ -8,8 +8,8 @@ import (
 )
 
 func main() {
-	c := config.ReadConfig("./config.json")
-	if c == nil {
+	c, err := config.ReadConfig("./config.json")
+	if err != nil {
 		log.Fatal("Could not read config file!")
 	}
 	g := job.NewGreeter(c)

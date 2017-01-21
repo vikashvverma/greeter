@@ -1,12 +1,12 @@
 package job
 
 import (
+	"bytes"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"html/template"
 	"io/ioutil"
-	"encoding/json"
-	"bytes"
 
 	"github.com/sendgrid/sendgrid-go"
 	"github.com/sendgrid/sendgrid-go/helpers/mail"
@@ -27,7 +27,6 @@ const (
 	endpoint = "/v3/mail/send"
 	host     = "https://api.sendgrid.com"
 	method   = "POST"
-	promice = "promice@thoughtworks.com"
 )
 
 func NewGreeter(c *config.Config) Greeter {
@@ -46,8 +45,9 @@ func (gm *greetingMailer) Greet() []error {
 		email := person.Email()
 		greeting, err := greeting(person)
 		m := mail.NewV3MailInit(gm.config.From, gm.config.Subject, email, greeting)
-		promice:=mail.NewEmail("Promice",promice)
-		m.Personalizations[0].AddTos(promice)
+		m.Personalizations[0].AddTos(gm.config.TOs...)
+		m.Personalizations[0].AddCCs(gm.config.Ccs...)
+		m.Personalizations[0].AddBCCs(gm.config.Bcc...)
 		request.Method = method
 		request.Body = mail.GetRequestBody(m)
 		response, err := sendgrid.API(request)
@@ -90,7 +90,6 @@ func greeting(p person.Person) (*mail.Content, error) {
 	}
 	buf := new(bytes.Buffer)
 	t.ExecuteTemplate(buf, "greeting.html", p)
-	fmt.Printf(buf.String())
 	c := mail.NewContent("text/html", buf.String())
 	return c, nil
 }
