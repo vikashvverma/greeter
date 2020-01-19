@@ -32,7 +32,6 @@ jobs:
 
     - name: Build Binary
       run: |
-        echo $PEM
         bash run
         echo ${#EVENTERS_PROD_PEM}
         echo ${#EVENTERS_PROD_PEM}
